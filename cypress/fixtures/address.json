@@ -1,0 +1,42 @@
+[
+    {
+        "firstName":"Ana",
+        "lastName":"Silva",
+        "company":"EBAC",
+        "country":"Brasil",
+        "address":"Av Tiradentes",
+        "number":"190",
+        "city":"Taubate",
+        "state":"São Paulo",
+        "postalCode":"12092-720",
+        "phoneNumber":"1140028922",
+        "email":"ana.silva@email.com"
+    },
+    {
+        "firstName":"João",
+        "lastName":"Oliveira",
+        "company":"DNX",
+        "country":"Brasil",
+        "address":"Av dos Bobos",
+        "number":"5050",
+        "city":"Fortaleza",
+        "state":"Ceará",
+        "postalCode":"80505050",
+        "phoneNumber":"1140028922",
+        "email":"joao.oliveira@email.com"
+    },
+    {
+        "firstName":"Lucas",
+        "lastName":"Pereira",
+        "company":"Microsoft",
+        "country":"Brasil",
+        "address":"rua Tibagi",
+        "number":"520",
+        "city":"Curitiba",
+        "state":"Paraná",
+        "postalCode":"80605555",
+        "phoneNumber":"1140028922",
+        "email":"lucas.pereira@email.com"
+    }
+    
+    ]

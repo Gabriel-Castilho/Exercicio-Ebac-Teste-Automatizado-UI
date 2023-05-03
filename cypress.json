@@ -1,3 +1,5 @@
 {
+  "chromeWebSecurity":false,
   "baseUrl": "http://lojaebac.ebaconline.art.br/"
+  
 }
