@@ -51,21 +51,28 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             dataAddress[2].postalCode,
         )
         //adicionar produtos no carrinho
-      
-        cy.addProductOnCart(quantity);
+
+        cy.addProductOnCart(0, "M", "Red", quantity);
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity * 1);
+        cy.addProductOnCart(8, "XL", "Blue", quantity);
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity * 2);
+        cy.addProductOnCart(0, "S", "Green", quantity);
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity * 3);
+        cy.addProductOnCart(8, "M", "Blue", quantity);
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity * 4);
         //ir para pagamento
         cy.checkout();
 
     });
     //it.only('deve adicionar produtos no carrinho', () => {
-        /* NÃO É POSSÍVEL DEIXAR TUDO AUTOMÁTICO, VISTO QUE EXISTEM PRODUTOS QUE SÓ POSSUI UMA COR, OU TAMANHO
-        let quantity = Math.floor(Math.random() * (9 - 1) + 1);
-        let arraySize = Math.floor(Math.random() * (5 - 1) + 1);
-        let arrayColor = Math.floor(Math.random() * (3 - 1) + 1);
-         cy.selectProducts(quantity);
-        cy.addProductOnCart(arraySize,arrayColor,quantity);
-        */
-       
-   // })
+    /* NÃO É POSSÍVEL DEIXAR TUDO AUTOMÁTICO, VISTO QUE EXISTEM PRODUTOS QUE SÓ POSSUI UMA COR, OU TAMANHO
+    let quantity = Math.floor(Math.random() * (9 - 1) + 1);
+    let arraySize = Math.floor(Math.random() * (5 - 1) + 1);
+    let arrayColor = Math.floor(Math.random() * (3 - 1) + 1);
+     cy.selectProducts(quantity);
+    cy.addProductOnCart(arraySize,arrayColor,quantity);
+    */
+
+    // })
 
 })

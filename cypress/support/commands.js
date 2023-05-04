@@ -18,41 +18,16 @@ Cypress.Commands.add('firstRegister', (email, password, firstName, lastName) => 
 
 })
 
-Cypress.Commands.add('addProductOnCart', (quantity,) => {
+Cypress.Commands.add('addProductOnCart', (item,size,color,quantity) => {
     //adicionando primeiro item
     cy.get('#primary-menu > .menu-item-629 > a').click();
-    cy.get('[class="product-block grid"]').first().click();
-    cy.get('[class="variable-item button-variable-item button-variable-item-M"]').click();
-    cy.get('.button-variable-item-Red').click();
-    cy.get('.input-text').clear().type(quantity);
+    cy.get('[class="product-block grid"]').eq(item).click();
+    //cy.get(`.button-variable-item-${size}`).click({force:true});
+    cy.get(`[class="variable-item button-variable-item button-variable-item-${size}"]`).click();
+    cy.get(`.button-variable-item-${color}`).click();
+   // cy.get('.button-variable-item-Red').click();
+    cy.get('.input-text').clear().type(quantity); 
     cy.get('.single_add_to_cart_button').click();
-    cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity);
-    
-   //adicionando segundo item
-   cy.get('#primary-menu > .menu-item-629 > a').click();
-    cy.get('[class="product-block grid"]').eq(8).click();
-    cy.get('[class="variable-item button-variable-item button-variable-item-XL"]').click();
-    cy.get('.button-variable-item-Blue').click();
-    cy.get('.input-text').clear().type(quantity);
-    cy.get('.single_add_to_cart_button').click();
-    cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity *2);
-    //adicionado terceiro item
-    cy.get('#primary-menu > .menu-item-629 > a').click();
-    cy.get('[class="product-block grid"]').first().click();
-    cy.get('[class="variable-item button-variable-item button-variable-item-S"]').click();
-    cy.get('.button-variable-item-Green').click();
-    cy.get('.input-text').clear().type(quantity);
-    cy.get('.single_add_to_cart_button').click();
-    cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity *3);
-    //adicionando quarto item
-    cy.get('#primary-menu > .menu-item-629 > a').click();
-    cy.get('[class="product-block grid"]').eq(8).click();
-    cy.get('[class="variable-item button-variable-item button-variable-item-M"]').click();
-    cy.get('.button-variable-item-Blue').click();
-    cy.get('.input-text').clear().type(quantity);
-    cy.get('.single_add_to_cart_button').click();
-    cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity*4)
-
     }) 
 
 Cypress.Commands.add('checkout',()=>{
