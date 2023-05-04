@@ -33,7 +33,7 @@ Cypress.Commands.add('addProductOnCart', (item,size,color,quantity) => {
 Cypress.Commands.add('checkout',()=>{
     cy.get('.woocommerce-message > .button').click();
     cy.get('.checkout-button').click()
-    cy.get('#payment_method_cod').click();
+    //cy.get('#payment_method_cod').click();
     //cy.get('[class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"]').click();
     cy.get('.woocommerce-terms-and-conditions-checkbox-text').click({ force:true });
     cy.get('#place_order').click({force:true});
