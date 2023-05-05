@@ -14,7 +14,7 @@ class EnderecoPage{
         cy.get('#billing_phone').clear().type(phoneNumber);
         cy.get('#billing_email').clear().type(email);
         cy.get(':nth-child(2) > .button').click();
-        cy.get('.woocommerce-message').should('contain','Endereço alterado com sucesso');
+
     }
 
     editShippingAddress(firstName,lastName,company,country,address,number,city,state,postalCode){
@@ -30,7 +30,7 @@ class EnderecoPage{
         cy.get('#select2-shipping_state-container').click().type(state).get('[aria-selected="true"]').click();;
         cy.get('#shipping_postcode').clear().type(postalCode);
         cy.get(':nth-child(2) > .button').click();
-        cy.get('.woocommerce-message').should('contain','Endereço alterado com sucesso');
+
 
     }
 }

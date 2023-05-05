@@ -26,6 +26,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         let email = faker.internet.email(firstName);
         let quantity = Math.floor(Math.random() * (9 - 1) + 1);
         cy.firstRegister(email, password, firstName, lastName)
+        cy.get('.woocommerce-message').should('contain', 'Detalhes da conta modificados com sucesso.');
         //editar endereço de cobrança
         enderecoPage.editBillingAddress(firstName,
             lastName,
@@ -39,6 +40,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             dataAddress[2].phoneNumber,
             email
         )
+        cy.get('.woocommerce-message').should('contain','Endereço alterado com sucesso');
         //editar endereço de entrega
         enderecoPage.editShippingAddress(firstName,
             lastName,
@@ -50,6 +52,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             dataAddress[2].state,
             dataAddress[2].postalCode,
         )
+        cy.get('.woocommerce-message').should('contain','Endereço alterado com sucesso');
         //adicionar produtos no carrinho
 
         cy.addProductOnCart(0, "M", "Red", quantity);
@@ -62,8 +65,11 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity * 4);
         //ir para pagamento
         cy.checkout();
+        cy.get('.woocommerce-notice').should('contain','Obrigado. Seu pedido foi recebido.');
 
     });
+
+    
     //it.only('deve adicionar produtos no carrinho', () => {
     /* NÃO É POSSÍVEL DEIXAR TUDO AUTOMÁTICO, VISTO QUE EXISTEM PRODUTOS QUE SÓ POSSUI UMA COR, OU TAMANHO
     let quantity = Math.floor(Math.random() * (9 - 1) + 1);
