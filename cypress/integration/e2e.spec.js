@@ -40,7 +40,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             dataAddress[2].phoneNumber,
             email
         )
-        cy.get('.woocommerce-message').should('contain','Endereço alterado com sucesso');
+        cy.get('.woocommerce-message').should('contain', 'Endereço alterado com sucesso');
         //editar endereço de entrega
         enderecoPage.editShippingAddress(firstName,
             lastName,
@@ -52,24 +52,29 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             dataAddress[2].state,
             dataAddress[2].postalCode,
         )
-        cy.get('.woocommerce-message').should('contain','Endereço alterado com sucesso');
+        cy.get('.woocommerce-message').should('contain', 'Endereço alterado com sucesso');
         //adicionar produtos no carrinho
 
         cy.addProductOnCart(0, "M", "Red", quantity);
+        //valida se o número apresentado no carrinho está conforme o que foi adicionado
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity * 1);
         cy.addProductOnCart(8, "XL", "Blue", quantity);
+        //valida se o número apresentado no carrinho está conforme o que foi adicionado
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity * 2);
         cy.addProductOnCart(0, "S", "Green", quantity);
+        //valida se o número apresentado no carrinho está conforme o que foi adicionado
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity * 3);
+        //valida se o número apresentado no carrinho está conforme o que foi adicionado
         cy.addProductOnCart(8, "M", "Blue", quantity);
+        //valida se o número apresentado no carrinho está conforme o que foi adicionado
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantity * 4);
         //ir para pagamento
         cy.checkout();
-        cy.get('.woocommerce-notice').should('contain','Obrigado. Seu pedido foi recebido.');
+        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.');
 
     });
 
-    
+
     //it.only('deve adicionar produtos no carrinho', () => {
     /* NÃO É POSSÍVEL DEIXAR TUDO AUTOMÁTICO, VISTO QUE EXISTEM PRODUTOS QUE SÓ POSSUI UMA COR, OU TAMANHO
     let quantity = Math.floor(Math.random() * (9 - 1) + 1);
