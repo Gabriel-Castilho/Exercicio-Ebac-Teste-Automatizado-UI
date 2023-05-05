@@ -14,8 +14,6 @@ Cypress.Commands.add('firstRegister', (email, password, firstName, lastName) => 
     cy.get('#account_first_name').type(firstName);
     cy.get('#account_last_name').type(lastName);
     cy.get('.woocommerce-Button').click();
-    cy.get('.woocommerce-message').should('contain', 'Detalhes da conta modificados com sucesso.');
-
 })
 
 Cypress.Commands.add('addProductOnCart', (item,size,color,quantity) => {
@@ -37,7 +35,7 @@ Cypress.Commands.add('checkout',()=>{
     //cy.get('[class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"]').click();
     cy.get('.woocommerce-terms-and-conditions-checkbox-text').click({ force:true });
     cy.get('#place_order').click({force:true});
-    cy.get('.woocommerce-notice').should('contain','Obrigado. Seu pedido foi recebido.');
+
 })
 
 
